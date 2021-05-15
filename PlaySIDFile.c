@@ -67,6 +67,7 @@ int main(int argc, char *argv[]) {
     if ((PlaySidBase=(struct PlaySidBase *)
     OpenLibrary("playsid.library",0))==NULL) {
       printf("Could not open playsid.library.\n");
+      free(header);
       exit(0);
     }
 
