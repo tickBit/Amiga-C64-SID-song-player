@@ -42,10 +42,12 @@ int main(int argc, char *argv[]) {
         exit(0);
     }
 
-    if (argc >= 3) UWORD tune = atoi(argv[2]) - 1; else tune = 0;
+    UWORD tune;
+
+    if (argc >= 3) tune = atoi(argv[2]) - 1; else tune = 0;
 
     APTR sidfile = NULL;
-    LONG emulrc = 0;
+    LONG emulrc = -1;
     LONG ri;
     APTR header = NULL;
 
@@ -55,7 +57,7 @@ int main(int argc, char *argv[]) {
     BPTR fh; 
     LONG cm;
 
-    if (header == NULL) exit(0);
+    if (header == NULL) goto cleanexit;
 
     /* the channels */
     BOOL channel[4];
@@ -64,11 +66,9 @@ int main(int argc, char *argv[]) {
     channel[2] = TRUE;
     channel[3] = TRUE;
 
-    if ((PlaySidBase=(struct PlaySidBase *)
-    OpenLibrary("playsid.library",0))==NULL) {
+    if ((PlaySidBase=(struct PlaySidBase *) OpenLibrary("playsid.library",0))==NULL) {
       printf("Could not open playsid.library.\n");
-      free(header);
-      exit(0);
+      goto cleanexit;
     }
 
     printf("playsid.library opened!\n");
@@ -83,6 +83,8 @@ int main(int argc, char *argv[]) {
         /* Allocate emulation resources */
         emulrc = AllocEmulResource();
 
+        printf("emulrc: %i\n",emulrc);
+
         /* filename without .info suffix */
         ri = ReadIcon(argv[1], header);
 
@@ -96,13 +98,13 @@ int main(int argc, char *argv[]) {
             APTR sidfile = NULL;
             sidfile = (APTR)malloc(size);
 
-            if (sidfile == NULL) cleanexit(header);
+            if (sidfile == NULL) goto cleanexit;
 
             /* read SID data into memory */
-            int fileread = Read(fh,(APTR)sidfile, size);
+            int fileread = Read(fh, (APTR)sidfile, size);
 
             /* APTR header, APTR file location, UWORD size*/
-            SetModule(header, (APTR)sidfile, size);
+            SetModule(header, sidfile, size);
 
             printf("Memory allocated for the SID data and module set.\n");
 
@@ -114,7 +116,8 @@ int main(int argc, char *argv[]) {
 
         
         } else {
-            cleanexit(header);
+            printf("Icon file not OK.\n");
+            goto cleanexit;
         }
 
         printf("Press return / enter to exit.\n");
@@ -123,24 +126,15 @@ int main(int argc, char *argv[]) {
 
         StopSong();
 
-        FreeEmulResource();
-
-        free(sidfile);
-
-        Close(fh);
     }
 
-    cleanexit(header);
-
-}
-
-int cleanexit(header) {
-
+cleanexit:
+    if (emulrc == 0) FreeEmulResource();
+    if (fh) Close(fh);
     if (header != NULL) free(header);
-
-	if (PlaySidBase) {
-        CloseLibrary((struct Library *)PlaySidBase);
-    }
+    if (sidfile != NULL) free(sidfile);
+	if (PlaySidBase) CloseLibrary((struct Library *)PlaySidBase);
 
     return 0;
+
 }
