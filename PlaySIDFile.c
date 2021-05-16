@@ -83,8 +83,6 @@ int main(int argc, char *argv[]) {
         /* Allocate emulation resources */
         emulrc = AllocEmulResource();
 
-        printf("emulrc: %i\n",emulrc);
-
         /* filename without .info suffix */
         ri = ReadIcon(argv[1], header);
 
