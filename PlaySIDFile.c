@@ -105,20 +105,23 @@ int main(int argc, char *argv[]) {
             SetModule(header, sidfile, size);
 
             printf("Memory allocated for the SID data and module set.\n");
-
+            
             SetVertFreq(50);              /* PAL */
             SetChannelEnable(channel);    /* channels */
             SetReverseEnable(FALSE);
 
             StartSong(tune);
 
+            printf("SONG: %s\n",(char *)(header)+22);
+            printf("AUTHOR: %s\n",(char *)(header)+54);
+            printf("COPYRIGHT: %s\n",(char *)(header)+86);
         
         } else {
             printf("Icon file not OK.\n");
             goto cleanexit;
         }
 
-        printf("Press return / enter to exit.\n");
+        printf("\nPress return / enter to exit.\n");
 
         getchar();  /* wait for char input */
 
