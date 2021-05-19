@@ -24,3 +24,7 @@ C64 songs, that have digitzed instruments!
 
 
 I'll try to find the time to improve this code...
+
+Example picture of the program's output:
+
+![GitHub-PlaySidFile](https://user-images.githubusercontent.com/61118857/118642778-6d5a6800-b7e4-11eb-90c5-4cf7a8843e82.jpg)
