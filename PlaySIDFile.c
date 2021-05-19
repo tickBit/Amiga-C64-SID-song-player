@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 
     UWORD tune;
 
-    if (argc >= 3) tune = atoi(argv[2]) - 1; else tune = 0;
+    if (argc >= 3) tune = atoi(argv[2])-1; else tune = 0;
 
     APTR sidfile = NULL;
     LONG emulrc = -1;
@@ -101,6 +101,9 @@ int main(int argc, char *argv[]) {
             /* read SID data into memory */
             int fileread = Read(fh, (APTR)sidfile, size);
 
+            /* if reading the file failed, goto cleanexit */
+            if (fileread < 0) goto cleanexit;
+
             /* APTR header, APTR file location, UWORD size*/
             SetModule(header, sidfile, size);
 
@@ -112,10 +115,11 @@ int main(int argc, char *argv[]) {
 
             StartSong(tune);
 
+            printf("\n");
             printf("SONG: %s\n",(char *)(header)+22);
             printf("AUTHOR: %s\n",(char *)(header)+54);
             printf("COPYRIGHT: %s\n",(char *)(header)+86);
-        
+            
         } else {
             printf("Icon file not OK.\n");
             goto cleanexit;
