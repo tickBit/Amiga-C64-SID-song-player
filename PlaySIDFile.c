@@ -27,7 +27,7 @@
 #include <clib/playsid_protos.h>
 #include <proto/playsid.h>
 #include <pragmas/playsid_pragmas.h>
-#include <pragma/playsid_lib.h>
+#include <pragma/playsid_lib.h> /* Please notice, that you'll need some fd2pragma program to create this header! */
 #include <proto/dos.h>
 #include <stdio.h>
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
 
     UWORD tune;
 
-    if (argc >= 3) tune = atoi(argv[2])-1; else tune = 0;
+    if (argc >= 3) tune = atoi(argv[2]); else tune = 0;
 
     APTR sidfile = NULL;
     LONG emulrc = -1;
