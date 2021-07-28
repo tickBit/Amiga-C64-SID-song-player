@@ -30,6 +30,12 @@ I hope you will have better luck!
 
 I'll try to find the time to improve this code...
 
-Example picture of the program's output:
+Example picture of the program's output (C-version):
 
 ![GitHub-PlaySidFile](https://user-images.githubusercontent.com/61118857/118642778-6d5a6800-b7e4-11eb-90c5-4cf7a8843e82.jpg)
+
+The assembly version is quite unfinished yet: It doesn't check, that absolutely everything is OK.
+Also, the filename parameter in the assembly version must not contain any trailing spaces.
+The number of tune to be played must be set in the code in the assembly version..
+But you'll get started with the assembly version to play SID tunes on the Amiga...
+CTRL+C to exit the assembly version.
