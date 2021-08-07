@@ -23,10 +23,8 @@ NOTICE!!
 I noticed, that this program nor does the PlaySID3.0 handle
 C64 songs, that have digitzed instruments!
 
-Back in the day I paid the shareware fee for DICE C compiler.
-With DICE I'm able to compile this project, but I've not managed
-to compile it with VBCC in my Amiga emulation setup yet..
-I hope you will have better luck!
+* PlaySIDFile.c can be compiled without problems at least with DICE.
+* PlaySIDFile-VBCC.c can be compiled (with instructions on the source) at least with VBCC.
 
 I'll try to find the time to improve this code...
 
