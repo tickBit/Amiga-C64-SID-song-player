@@ -24,7 +24,7 @@ I noticed, that this program nor does the PlaySID3.0 handle
 C64 songs, that have digitzed instruments!
 
 * PlaySIDFile.c can be compiled without problems at least with DICE.
-* PlaySIDFile-VBCC.c can be compiled (with instructions on the source) at least with VBCC.
+* PlaySIDFile-VBCC.c can be compiled (with instructions in the source) at least with VBCC.
 
 I'll try to find the time to improve this code...
 
