@@ -21,7 +21,7 @@ More info in the PlaySID3 archive.
 NOTICE!!
 
 I noticed, that this program nor does the PlaySID3.0 handle
-C64 songs, that have digitzed instruments!
+C64 songs, that have digitzed instruments! Little correction: It plays those songs, but without the sample sounds.
 
 * PlaySIDFile.c can be compiled without problems at least with DICE.
 * PlaySIDFile-VBCC.c can be compiled (with instructions in the source) at least with VBCC.
