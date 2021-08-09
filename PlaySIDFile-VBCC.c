@@ -31,8 +31,8 @@
    
    NOTICE!!
 
-   I noticed, that this program nor does the PlaySID3.0 handle
-   C64 songs, that have digitzed instruments!
+   I noticed, that this program nor does the PlaySID3.0 handle the samples in SID songs.
+   This may be an emulation issue, though. But "normal" SIDs should be ok.
 
 
    I'll try to find the time to improve this code...
@@ -141,13 +141,17 @@ int main(int argc, char *argv[]) {
             
             StartSong(tune);
 
+            printf("\n");
+            printf("SONG: %s\n",(char *)(header)+22);
+            printf("AUTHOR: %s\n",(char *)(header)+54);
+            printf("COPYRIGHT: %s\n",(char *)(header)+86);
         
         } else {
             printf("Icon file not OK.\n");
             cleanexit();
         }
 
-        printf("Press return / enter to exit.\n");
+        printf("\nPress return / enter to exit.\n");
 
         getchar();  /* wait for char input */
 
