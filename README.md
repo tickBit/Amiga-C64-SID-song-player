@@ -18,10 +18,11 @@ SIDConv yoursidfile.sid yoursidfile ICON
 
 More info in the PlaySID3 archive.
 
-NOTICE!!
+NOTICE -- CORRECTION !!
 
-I noticed, that this program nor does the PlaySID3.0 handle
-C64 songs, that have digitzed instruments! Little correction: It plays those songs, but without the sample sounds. This may be the problem of Amiga emulation, though.
+PlaySID3.0 can handle C64 songs, that have digitzed instruments! The problem is, the last High Voltage Sid Collection that supported the PSID format was HVSC #49. Fortunally, it is still availabe. The later HVSC's use RSID as format. PlaySID3.0's SIDConv seems to handle "normal" SID songs with that later format, but not those songs that have samples...
+
+I should put this correction notice inside the codes, too.
 
 * PlaySIDFile.c can be compiled without problems at least with DICE.
 * PlaySIDFile-VBCC.c can be compiled (with instructions in the source) at least with VBCC.
