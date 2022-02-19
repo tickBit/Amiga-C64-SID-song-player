@@ -20,7 +20,7 @@ More info in the PlaySID3 archive.
 
 NOTICE -- CORRECTION !!
 
-PlaySID3.0 can handle C64 songs, that have digitzed instruments! The problem is, the last High Voltage Sid Collection that supported the PSID format was HVSC #49. Fortunally, it is still availabe. The later HVSC's use RSID as format. PlaySID3.0's SIDConv seems to handle "normal" SID songs with that later format, but not those songs that have samples...
+PlaySID3.0 can handle C64 songs, that have digitized instruments! The problem is, the last High Voltage Sid Collection that supported the PSID format was HVSC #49. Fortunally, it is still availabe. The later HVSC's use RSID as format. PlaySID3.0's SIDConv seems to handle "normal" SID songs with that later format, but not those songs that have samples...
 
 I should put this correction notice inside the codes, too.
 
