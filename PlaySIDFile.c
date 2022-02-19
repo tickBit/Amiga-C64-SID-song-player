@@ -13,10 +13,15 @@
 
    More info in the PlaySID3 archive.
 
-   NOTICE!!
+   This C progam can be compiled at least with DICE.
 
-   I noticed, that this program nor does the PlaySID3.0 handle
-   C64 songs, that have digitzed instruments!
+   CORRECTION!!
+
+   PlaySID3.0 can handle C64 songs, that have digitized instruments!
+   The SID file format just must be PSID.
+
+   The last High Voltage SID Collection that supported PSID format, was
+   HVSC #49. At the time of writing this code, the HVSC #49 is still available.
 
 
    I'll try to find the time to improve this code...
@@ -40,6 +45,14 @@ int main(int argc, char *argv[]) {
     if (argc == 1) {
         printf("Usage: PlaySIDfile file tuneNr\n");
         exit(0);
+    }
+
+    /* check if the there is .sid suffix in the filename */
+    if (strlen(argv[1]) >= 2) {
+        if (strcmp(argv[1] + strlen(argv[1]) - 4, ".sid") == 0) {
+            printf("The filename must NOT end with .sid suffix!\nUse the SIDConv tool to convert the .sid files\n");
+            exit(0);
+        }
     }
 
     UWORD tune;
@@ -82,6 +95,11 @@ int main(int argc, char *argv[]) {
 
         /* Allocate emulation resources */
         emulrc = AllocEmulResource();
+
+        printf("Emulation resource error code: %d\n", emulrc);
+        if (emulrc == 0) {
+            printf("Allocation of emulation resources successful!\n");
+        }
 
         /* filename without .info suffix */
         ri = ReadIcon(argv[1], header);
