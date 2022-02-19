@@ -29,10 +29,11 @@
    You'll get a lot of warnings from the compiler, but you'll get the executable. :-)
 
    
-   NOTICE!!
+   CORRECTION!!
 
-   I noticed, that this program nor does the PlaySID3.0 handle the samples in SID songs.
-   This may be an emulation issue, though. But "normal" SIDs should be ok.
+   PlaySID3 can handle C64's SID songs with digitized instruments, but the format of the
+   .sid files must be PSID. The last High Voltage SID Collection that supported PSID files
+   was #49. At the time of this writing, #49 is still available.
 
 
    I'll try to find the time to improve this code...
@@ -78,7 +79,16 @@ int main(int argc, char *argv[]) {
         exit(0);
     }
 
-    
+    if (argc >= 2) {
+        /* check if the filename ends with .sid suffix */
+        if (strlen(argv[1]) > 4) {
+            if (strcmp(argv[1] + strlen(argv[1]) - 4, ".sid") == 0) {
+                printf("The filename must not end with .sid suffix!\nUse the SIDConv tool to convert the .sid file.\n");
+                exit(0);
+            }
+        }
+    }
+
     if (argc >= 3) tune = atoi(argv[2]); else tune = 0;
 
  
@@ -113,7 +123,10 @@ int main(int argc, char *argv[]) {
         emulrc = AllocEmulResource();
 
         printf("Emulation resources error code: %i\n",emulrc);
-
+        if (emulrc == 0) {
+            printf("Emulation resources allocated!\n");
+        }
+        
         /* filename without .info suffix */
         ri = ReadIcon(argv[1], header);
 
