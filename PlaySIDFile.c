@@ -49,9 +49,11 @@ int main(int argc, char *argv[]) {
 
     /* check if the there is .sid suffix in the filename */
     if (strlen(argv[1]) >= 2) {
-        if (strcmp(argv[1] + strlen(argv[1]) - 4, ".sid") == 0) {
-            printf("The filename must NOT end with .sid suffix!\nUse the SIDConv tool to convert the .sid files\n");
-            exit(0);
+        if (strlen(argv[1]) > 4) {
+            if (strcmp(argv[1] + strlen(argv[1]) - 4, ".sid") == 0) {
+                printf("The filename must NOT end with .sid suffix!\nUse the SIDConv tool to convert the .sid files\n");
+                exit(0);
+            }
         }
     }
 
