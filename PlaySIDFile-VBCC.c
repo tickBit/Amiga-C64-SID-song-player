@@ -16,12 +16,20 @@
    NDK3.9 os include files:
    http://www.haage-partner.de/download/AmigaOS/NDK39.lha
 
-   You'll need the following for the VBCC (use the appropriate paths):
-
-   fd2pragma fd/playsid_lib.fd CLIB clib/playsid_protos.h TO inline SPECIAL 70
-   fd2pragma fd/playsid_lib.fd CLIB clib/playsid_protos.h TO proto SPECIAL 38
-
-   I've used AmiKIT's DevPack environment with VBCC.
+   In my Amiga working environemnt I have set up the environment for VBCC as follows:
+   
+   assign VBCC: Work:Dev/DevPack/vbcc
+   assign vinclude3: VBCC:targets/m68k-amigaos/include
+   assign vinclude3: Work:Dev/DevPack/SDK/NDK_3.9/include/include_h ADD
+   assign vlibos3: VBCC:targets/m68k-amigaos/lib
+   
+   path VBCC:bin
+   alias vbcc vc
+   
+   The include files from PlaySID3.lha are in the root, where I have this code.
+   I have copied from PlaySID3.0/fd/playsid_lib.h to this root directory's include/libraries
+      
+   Hope this helps others too! :-)
 
    Command line for VBCC:
    vc -lamiga PlaySIDFile-VBCC.c -o PlaySIDFile-VBCC
@@ -29,8 +37,6 @@
    You'll get a lot of warnings from the compiler, but you'll get the executable. :-)
 
    
-   CORRECTION!!
-
    PlaySID3 can handle C64's SID songs with digitized instruments, but the format of the
    .sid files must be PSID. The last High Voltage SID Collection that supported PSID files
    was #49. At the time of this writing, #49 is still available.
@@ -40,16 +46,15 @@
 
 */
 
-
 #include <exec/types.h>
 
 #include <dos/stdio.h>
 #include <proto/dos.h>
 
-#include <libraries/playsidbase.h>
-#include <clib/playsid_protos.h>
-#include <proto/playsid.h>
-#include <inline/playsid_protos.h>
+#include "include/libraries/playsid_lib.h"
+#include "include/libraries/playsidbase.h"
+#include "include/clib/playsid_protos.h"
+#include "include/proto/playsid.h"
 
 
 
