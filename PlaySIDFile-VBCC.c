@@ -19,8 +19,8 @@
    In my Amiga working environemnt I have set up the environment for VBCC as follows:
    
    assign VBCC: Work:Dev/DevPack/vbcc
-   assign vinclude3: VBCC:targets/m68k-amigaos/include
-   assign vinclude3: Work:Dev/DevPack/SDK/NDK_3.9/include/include_h ADD
+   assign vincludeos3: VBCC:targets/m68k-amigaos/include
+   assign vincludeos3: Work:Dev/DevPack/SDK/NDK_3.9/include/include_h ADD
    assign vlibos3: VBCC:targets/m68k-amigaos/lib
    
    path VBCC:bin
@@ -28,7 +28,8 @@
    
    The include files from PlaySID3.lha are in the root, where I have this code.
    I have copied from PlaySID3.0/fd/playsid_lib.h to this root directory's include/libraries
-      
+   
+   
    Hope this helps others too! :-)
 
    Command line for VBCC:
