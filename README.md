@@ -10,6 +10,14 @@ This program uses the playsid.library and the include files
 that come with the archive. Please notice, that you'll need some
 fd2pragma program, too.
 
+For VBCC compiler I recommend AmiKit's DevPack.
+
+Some instructions for VBCC:
+
+- make directory "inline" into PlaySID3.0's include directory
+- fd2pragma fd/playsid_lib.fd CLIB include/clib/playsid_protos.h TO include/inline SPECIAL 70
+- copy the needed include files into your Amiga C development system..
+
 Furthermore, in order to play the C64's SID files,
 you'll need to use the SIDConv tool of PlaySID3 archive to
 convert the .sid files into two (2) files like this:
@@ -23,7 +31,7 @@ PlaySID3.0 can handle C64 songs, that have digitized instruments. The problem is
 
 
 * PlaySIDFile.c can be compiled without problems at least with DICE.
-* PlaySIDFile-VBCC.c can be compiled (with instructions in the source) at least with VBCC.
+* PlaySIDFile-VBCC.c can be compiled at least with VBCC.
 
 I'll try to find the time to improve this code...
 

@@ -13,28 +13,14 @@
 
    More info in the PlaySID3 archive.
 
-   NDK3.9 os include files:
-   http://www.haage-partner.de/download/AmigaOS/NDK39.lha
+   For compiling I recommend AmiKit's DevPack.
 
-   In my Amiga working environemnt I have set up the environment for VBCC as follows:
-   
-   assign VBCC: Work:Dev/DevPack/vbcc
-   assign vincludeos3: VBCC:targets/m68k-amigaos/include
-   assign vincludeos3: Work:Dev/DevPack/SDK/NDK_3.9/include/include_h ADD
-   assign vlibos3: VBCC:targets/m68k-amigaos/lib
-   
-   path VBCC:bin
-   alias vbcc vc
-   
-   The include files from PlaySID3.lha are in the root, where I have this code.
-   I have copied from PlaySID3.0/fd/playsid_lib.h to this root directory's include/libraries
-   
-   
-   Hope this helps others too! :-)
+   Some instructions:
 
-   Command line for VBCC:
-   vc -lamiga PlaySIDFile-VBCC.c -o PlaySIDFile-VBCC
-
+   - make directory "inline" into PlaySID3.0's include directory
+   - fd2pragma fd/playsid_lib.fd CLIB include/clib/playsid_protos.h TO include/inline SPECIAL 70
+   - copy the needed include files into your Amiga C development system..
+   
    You'll get a lot of warnings from the compiler, but you'll get the executable. :-)
 
    
@@ -52,11 +38,9 @@
 #include <dos/stdio.h>
 #include <proto/dos.h>
 
-#include "include/libraries/playsid_lib.h"
-#include "include/libraries/playsidbase.h"
-#include "include/clib/playsid_protos.h"
-#include "include/proto/playsid.h"
-
+#include <libraries/playsidbase.h>
+#include <pragmas/playsid_pragmas.h>
+#include <inline/playsid_protos.h>
 
 
 struct PlaySidBase *PlaySidBase=NULL;
